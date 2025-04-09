@@ -1,0 +1,65 @@
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <a class="btn btn-ghost text-xl">
+        <div class="border-1 bg-secondary logo p-2 rounded-xl" routerLink="/">JAVA</div>
+      </a>
+    </div>
+    <div class="navbar-center flex">
+      <div class="menu menu-sm sm:menu-lg menu-horizontal px-1">
+        <li><a href="/">Home</a></li>
+        <li>
+          <details #productsMenu>
+            <summary>Products</summary>
+            <ul class="z-30">
+              <li><a href="/products"> All</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details #adminMenu>
+            <summary>Admin</summary>
+            <ul class="z-30">
+              <li><a href="/admin"> All</a></li>
+            </ul>
+          </details>
+        </li>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-end pe-4 flex align-items-center">
+    <div class="dropdown dropdown-end pe-4" routerLink="/cart">
+      <div role="button" tabindex="0">
+        @if (this.isConnected() && connectedUserQuery?.data()?.imageUrl !== null) {
+          <div class="border border-solid rounded-full">
+            <img src="{{connectedUserQuery?.data()?.imageUrl}}" alt="user-avatar"
+                 class="avatar-unknown rounded-full" width="45px"/>
+          </div>
+        } @else {
+          <fa-icon [icon]="['fas', 'user']" class="menu-icon"></fa-icon>
+        }
+      </div>
+      @if (this.isConnected()) {
+        <ul class="dropdown-content menu menu-lg bg-base-100 rounded-box z-10 w-52 p-2 shadow">
+          <li>
+            <button class="link" (click)="closeDropDownMenu()" routerLink="/users/orders">My Orders</button>
+          </li>
+          <li>
+            <button class="link" (click)="logout()">Logout</button>
+          </li>
+        </ul>
+      } @else {
+        <ul class="dropdown-content menu menu-lg bg-base-100 rounded-box z-10 w-52 p-2 shadow">
+          <li>
+            <button class="link" (click)="login()">Login</button>
+          </li>
+        </ul>
+      }
+    </div>
+    <div class="dropdown dropdown-end me-2" routerLink="/cart">
+      <div role="button" tabindex="0">
+        <fa-icon [icon]="['fas', 'cart-shopping']" class="ui-menu-icon"></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>
