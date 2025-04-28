@@ -51,19 +51,4 @@ export class Oauth2Service {
     });
   }
 
-  hasAnyAuthorities(
-    connectedUser: ConnectedUser,
-    authorities: Array<string> | string
-  ): boolean {
-    if (!Array.isArray(authorities)) {
-      authorities = [authorities];
-    }
-    if (connectedUser.authorities) {
-      return connectedUser.authorities.some((authority: string) =>
-        authorities.includes(authority)
-      );
-    } else {
-      return false;
-    }
-  }
 }

@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}",  // cerca classi nei file HTML e TypeScript
+    "./src/**/*.{html,ts}",
   ],
   theme: {
     fontFamily: {
@@ -21,21 +21,8 @@ module.exports = {
   },
   daisyui: {
     themes: [
-      {
-        fantasy: {
-          primary: '#0000ff',
-          'primary-content': 'white',
-          secondary: '#F6F6F6',
-          neutral: '#E8E8E8',
-        },
-      },
+      "light"
     ],
-    base: true,
-    styled: true,
-    utils: true,
-    prefix: '',
-    logs: true,
-    themeRoot: ':root'
   },
   plugins: [
     require('@tailwindcss/typography'),
